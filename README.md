@@ -13,6 +13,7 @@ Research Questions:
 # Datasets  
 HASOC 2019  
 HASOC 2020    
+link to data sources: [HASOC DATASETS MAIN SOURCE](https://hasocfire.github.io/hasoc/2020/dataset.html)
 
 # Classification Pipeline  
 ![Classification Pipeline](methods.PNG)
