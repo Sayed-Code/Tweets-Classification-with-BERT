@@ -15,5 +15,10 @@ HASOC 2019
 HASOC 2020    
 link to data sources: [HASOC DATASETS MAIN SOURCE](https://hasocfire.github.io/hasoc/2020/dataset.html)
 
+# BERT MDOELS CONSIDERED  
+1. [bert-base-multilingual-uncased](https://huggingface.co/bert-base-multilingual-uncased)
+2. [bert-base-multilingual-cased](https://huggingface.co/bert-base-multilingual-cased)
+3. [bert-base-german-cased](https://huggingface.co/bert-base-german-cased)
+
 # Classification Pipeline  
 ![Classification Pipeline](methods.PNG)
