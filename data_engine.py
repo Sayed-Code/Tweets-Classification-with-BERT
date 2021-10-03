@@ -110,16 +110,6 @@ def read_data(params: dict) -> Tuple[dict, dict]:
     :param params: a dictionary read from the config.yml file
     :return: a tuple with 2 dictionaries
     """
-    # reading CSV files to Pandas dataframes
-    #train_df = pd.read_excel(
-    #    Path(params["data"]["path_to_data"]) / params["data"]["train_filename"]
-    #, engine='openpyxl')
-    #valid_df = pd.read_excel(
-    #    Path(params["data"]["path_to_data"]) / params["data"]["validation_filename"]
-    #, engine='openpyxl')
-    #test_df = pd.read_excel(
-    #    Path(params["data"]["path_to_data"]) / params["data"]["test_filename"]
-    #, engine='openpyxl')
 
     # reading CSV files to Pandas dataframes
     train_df = pd.read_csv(
