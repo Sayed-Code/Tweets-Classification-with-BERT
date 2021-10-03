@@ -161,6 +161,7 @@ def read_data(params: dict) -> Tuple[dict, dict]:
             batch_size=params["training"]["batch_size"],
             shuffle=True,
         ),
+
         "valid": DataLoader(
             dataset=valid_dataset,
             batch_size=params["training"]["batch_size"],
