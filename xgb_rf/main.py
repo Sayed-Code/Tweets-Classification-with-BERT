@@ -1,6 +1,4 @@
 import pickle
-import neptune.new as neptune
-from neptune.new.integrations.xgboost import NeptuneCallback
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer
@@ -68,16 +66,6 @@ def split_data_train_test(X, y):
 
 
 def train_xgb_model(data, yr):
-    run = neptune.init(project="moalsayed/XGBSAYED",
-                       api_token='eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1'
-                                 'bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwd'
-                                 'HVuZS5haSIsImFwaV9rZXkiOiI5Y2JkMGEzNi1mOGRmL'
-                                 'TRiYTctYjNjYi1iYzJlYTc2MzgzYzYifQ==',)
-
-    run["algorithm"] = "XGBoost"
-
-    # Create neptune callback
-    neptune_callback = NeptuneCallback(run=run, log_tree=[0, 1, 2, 3])
 
     if not data.empty:
         X, y = data.iloc[:, :-1], data.iloc[:, -1]
@@ -93,29 +81,18 @@ def train_xgb_model(data, yr):
             "reg lambda": 6,
             "random state": 123
         }
-        run["parameters"] = params
+
 
         xgb_class = XGBClassifier(random_state=123)
         xgb_class.set_params(n_estimators=30, learning_rate=0.1,
                              reg_lambda=6, max_depth=15)
 
-        xgb_class.fit(
-            X_train,
-            y_train,
-            callbacks=[
-                neptune_callback,
-                xgb.callback.LearningRateScheduler(
-                    lambda epoch: 0.99 ** epoch),
-            ],
-        )
+        xgb_class.fit(X_train,y_train)
         plot_confusion_matrix(xgb_class, X_test, y_test)
         plt.show()
 
         predictions = xgb_class.predict(X_test)
         accuracy = accuracy_score(y_test, predictions)
-
-        run["train/accuracy"] = accuracy
-
         print("[+] ----- Accuracy: %.2f%%" % (accuracy * 100.0))
         model_name =   f'/xgb_classification_model_{yr}'+ '.pickle.dat'
 
