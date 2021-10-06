@@ -22,6 +22,7 @@ print(device)
 
 # loading config params
 project_root: Path = get_project_root()
+
 with open(str(project_root / "config.yml")) as f:
     params = yaml.load(f, Loader=yaml.FullLoader)
 
