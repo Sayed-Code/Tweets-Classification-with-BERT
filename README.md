@@ -62,7 +62,7 @@ HASOC 2019 + HASOC 2020 | HASOC 2019 + HASOC 2020 |  79.85
 # RESULTS - XGBoost and Random Forest Classifiers  
 
 Training | Testing | RF | XGBoost
---- | --- | ---  
+--- | --- | ---  | --- 
 HASOC 2019 | HASOC 2019 | 72.16 | 70.51
 --- | --- | ---  
 HASOC 2020 | HASOC 2020 | 67.6  |  62.85
